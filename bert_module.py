@@ -30,8 +30,9 @@ import json
 import math
 import re
 import six
-import tensorflow as tf
-
+#import tensorflow as tf2
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 class BertConfig(object):
   """Configuration for `BertModel`."""
@@ -339,9 +340,10 @@ def dropout(input_tensor, dropout_prob):
 
 def layer_norm(input_tensor, name=None):
   """Run layer normalization on the last dimension of the tensor."""
-  return tf.contrib.layers.layer_norm(
-      inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
-
+  #return tf.contrib.layers.layer_norm(inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
+  #return tf2.keras.layers.LayerNormalization(inputs=input_tensor, begin_norm_axis=-1, begin_params_axis=-1, scope=name)
+  layer_norma = tf.keras.layers.LayerNormalization(axis = -1)
+  return layer_norma(input_tensor)
 
 def layer_norm_and_dropout(input_tensor, dropout_prob, name=None):
   """Runs layer normalization followed by dropout."""

@@ -7,7 +7,9 @@
 from __future__ import print_function
 from PIL import Image
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import os
 import glob
 import matplotlib.pyplot as plt
@@ -305,7 +307,7 @@ def positional_encoding(inputs,
 def feedforward(inputs,
                 num_units=[2048, 512],
                 scope="transiting_function",
-                reuse=tf.AUTO_REUSE):
+                reuse=tf.compat.v1.AUTO_REUSE):
     '''Point-wise feed forward net.
 
     Args:

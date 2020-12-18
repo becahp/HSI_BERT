@@ -4,7 +4,10 @@
 # @FileName: hsi_bert.py
 # @E-mail: hj@jimhe.cn
 
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 from module import label_smoothing, transformer_encoder
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
@@ -39,8 +42,10 @@ class HSI_BERT(object):
         self.attention_dropout = attention_dropout
         self.num_classes = num_classes
         self.graph = tf.Graph()
+        #self.graph = tf.compat.v1.Graph()
         self.start_learning_rate = start_learning_rate
-        self.sess = tf.Session(graph=self.graph)
+        #self.sess = tf.Session(graph=self.graph)
+        self.sess = tf.compat.v1.Session(graph=self.graph)
         self.prembed = prembed
         self.prembed_dim = prembed_dim
         self.num_hidden = num_hidden

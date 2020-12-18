@@ -5,7 +5,7 @@
 # @E-mail: hj@jimhe.cn
 
 import numpy as np
-from keras.preprocessing import image
+from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import imshow
 import tensorflow as tf
